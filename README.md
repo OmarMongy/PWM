@@ -22,6 +22,7 @@ The always block triggered on any change in the inputs is responsible for calcul
 ## Timer Counter Module
 The timer_counter_inp module is a configurable timer counter that counts from 0 to the user-defined **final_value**. It provides a simple and efficient way to generate timing signals for various applications.
 
+
 **Inputs**
 - **clk**: Clock signal used for synchronization.
 - **reset_n**: Asynchronous active-low reset signal.
@@ -32,7 +33,10 @@ The timer_counter_inp module is a configurable timer counter that counts from 0 
 - **done**: Indicates when the timer has reached the final_value.
 
 **Operation**
-The timer counter module uses an always block triggered on the positive clock edge and negative reset signal to update the counter's value when the enable signal is high. When the counter reaches the **final_value**, the **done** output is set high, indicating that the desired timing interval has elapsed.
+The timer counter module uses an always block triggered on the positive clock edge and negative reset signal to update the counter's value when the enable signal is high. When the counter reaches the **final_value**, the **done** output is set high, indicating that the desired timing interval has elapsed ,One of the key features of the timer_counter_inp module is its ability to control the frequency of the output PWM signal.
+By configuring the final_value parameter, users can adjust the timer's counting value, which directly affects the PWM frequency.
+The PWM frequency is inversely proportional to the timer's counting value. A larger final_value will result in a slower counting rate, leading to a lower PWM frequency. Conversely, a smaller final_value will increase the counting rate and raise the PWM frequency.
+
 
 ## Applications and Uses of PWM
 The PWM controller implemented in this project has a wide range of applications and uses across various industries and electronic systems. Some of the key applications include:
@@ -53,16 +57,6 @@ The PWM controller implemented in this project has a wide range of applications 
 ## Repository Structure
 The repository contains the following files:
 
-- **PWM.v**: Verilog source file containing the PWM module code.
-- **timer_counter_inp.v**: Verilog source file containing the timer_counter_inp module code.
+- **Source**: Verilog source file containing the PWM and the timer_counter_inp module code.
+- **Sim**: Verilog testbench for the PWM module including the simulation results.
 - **README.md**: Detailed explanation of the project, its modules, and their applications.
-- **LICENSE**: License file specifying the terms of use for the project.
-- (Optional) **testbench.v**: Verilog testbench file to simulate and verify the functionality of the PWM controller.
-
-## How to Use
-The README.md file provides instructions on using the PWM and timer_counter_inp modules in your Verilog designs. It includes details about parameter configurations, simulation, implementation considerations, and licensing information.
-
-## License
-This project is released under the MIT License, allowing users to freely use and modify the code while providing attribution to the original author.
-
-**Note:** The above text provides a formal and professional overview of the PWM Verilog controller project, including its modules, applications, and uses. In a real GitHub repository, the mentioned files (PWM.v, timer_counter_inp.v, README.md, LICENSE, and testbench.v) would be available for users to access and utilize the PWM controller for their specific applications.
