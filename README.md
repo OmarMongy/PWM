@@ -20,6 +20,7 @@ The PWM module generates the PWM signal based on the duty cycle value and the ti
 - On each clock edge, the PWM module increments the current PWM timer value (`Q_reg`) and compares it with the duty cycle value. If the current timer value is less than the duty cycle value, the PWM output (`pwm_out`) is set to high, otherwise low.
 - When the counter reaches the `Final_Value`, it generates a `done` signal to indicate that a complete PWM period has elapsed. At this point, the counter is reset, and the next PWM period starts.
 - The `reset_n` input is used to initialize the PWM module and counter to a known state when the reset is asserted.
+- Overall, the PWM module generates a PWM signal with a variable duty cycle specified by the duty input, where the duty cycle is a value between 0 and (`2^R - 1`). The counter counts up to Final_Value, and the PWM output is high (1) when the counter value is less than the duty cycle, and low (0) otherwise. The PWM signal repeats with the frequency of the clock.
 
 
 ## Timer Counter Module
